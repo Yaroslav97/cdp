@@ -1,0 +1,7 @@
+<batch>
+    <tickets>
+        <ticket id="0" userId="10" eventId="11" category="PREMIUM" place="0"/>
+        <ticket id="1" userId="20" eventId="22" category="PREMIUM" place="1"/>
+        <ticket id="2" userId="30" eventId="33" category="PREMIUM" place="2"/>
+    </tickets>
+</batch>

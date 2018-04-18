@@ -1,0 +1,12 @@
+INSERT INTO user(id, name, email) VALUES (0, 'Yaroslav Poliakov', 'Yaroslav_Poliakov@epam.com');
+INSERT INTO user(id, name, email) VALUES (1, 'Kostyantyn Dobarskyy', 'Kostyantyn_Dobarskyy@epam.com');
+INSERT INTO user(id, name, email) VALUES (2, 'Oleksandr Fesenko', 'Oleksandr_Fesenko@epam.com');
+INSERT INTO user_account(user_id, score) VALUES (0, 100);
+INSERT INTO user_account(user_id, score) VALUES (1, 100);
+INSERT INTO user_account(user_id, score) VALUES (2, 100);
+INSERT INTO event(id, title, date, price) VALUES (11, 'Java day', current_date, 150);
+INSERT INTO event(id, title, date, price) VALUES (22, 'JUG', current_date, 0);
+INSERT INTO event(id, title, date, price) VALUES (33, 'AI', current_date, 100);
+INSERT INTO ticket(id, event_id, user_id, category, place) VALUES (3, 11, 0, 'PREMIUM', '006');
+INSERT INTO ticket(id, event_id, user_id, category, place) VALUES (4, 22, 1, 'PREMIUM', '007');
+INSERT INTO ticket(id, event_id, user_id, category, place) VALUES (5, 33, 2, 'PREMIUM', '008');

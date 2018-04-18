@@ -1,0 +1,14 @@
+<ivysettings>
+    <settings defaultResolver="chained" defaultConflictManager="all"/>
+    <resolvers>
+        <ibiblio name="public" m2compatible="true"/>
+        <filesystem name="local">
+            <ivy pattern="${ivy.default.ivy.user.dir}/local/[organisation]/[module]/ivys/ivy-[revision].xml"/>
+            <artifact pattern="${ivy.default.ivy.user.dir}/local/[organisation]/[module]/[type]s/[artifact]-[revision].[ext]"/>
+        </filesystem>
+        <chain name="chained" returnFirst="true">
+            <resolver ref="local" />
+            <resolver ref="public" />
+        </chain>
+    </resolvers>
+</ivysettings>

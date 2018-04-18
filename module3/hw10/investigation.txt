@@ -1,0 +1,38 @@
+1000 exams and 10 students
+	a. Total query runtime:
+         "Execution Time": 0.235,
+         "Planning Time": 0.157,
+
+	b. Total query runtime:
+	     "Execution Time": 0.272,
+         "Planning Time": 0.243,
+
+	c. Total query runtime:
+	    "Execution Time": 0.409,
+        "Planning Time": 0.31
+
+10K exams and 1K students
+	a. Total query runtime: 191
+         "Execution Time": 2.177,
+         "Planning Time": 0.152,
+
+	b. Total query runtime:
+		 "Execution Time": 5.386,
+         "Planning Time": 1.539,
+
+	c. Total query runtime:
+	     "Execution Time": 4.063,
+         "Planning Time": 0.268,
+
+100K exams and 100K students
+	a. Total query runtime:
+	     "Execution Time": 0.053,
+         "Planning Time": 0.773,
+
+	b. Total query runtime:
+	     "Execution Time": 0.041,
+         "Planning Time": 0.261,
+
+	c. Total query runtime:
+	      "Execution Time": 0.063,
+          "Planning Time": 0.328,

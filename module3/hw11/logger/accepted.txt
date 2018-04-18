@@ -1,0 +1,2 @@
+{"user":{"name":"adgdgh","phone":"456"},"product":{"name":"COUNTABLE","size":5,"orderTotal":5}}
+{"user":{"name":"yaroslav","phone":"0993048924"},"product":{"name":"COUNTABLE","size":500,"orderTotal":500}}

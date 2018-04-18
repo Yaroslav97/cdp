@@ -1,0 +1,6 @@
+<ivy-module version="1.0">
+    <info organisation="com.epam" module="admin"/>
+    <dependencies>
+        <dependency org="com.epam" name="services" rev="1.0" conf="default"/>
+    </dependencies>
+</ivy-module>

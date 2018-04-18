@@ -1,0 +1,4 @@
+<project name="admin" default="clean">
+    <import file="../common/build-fat.xml"/>
+    <property name="main-class" value="com.admin.AdminEntryPoint"/>
+</project>

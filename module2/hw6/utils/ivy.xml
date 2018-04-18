@@ -1,0 +1,6 @@
+<ivy-module version="1.0">
+    <info organisation="com.epam" module="utils"/>
+    <dependencies>
+        <dependency org="junit" name="junit" rev="4.12" conf="default"/>
+    </dependencies>
+</ivy-module>

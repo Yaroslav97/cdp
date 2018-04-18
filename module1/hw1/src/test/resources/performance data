@@ -1,0 +1,17 @@
+5B
+class com.epam.cdp.Java7Aggregator(Sum) - 33 Millis
+class com.epam.cdp.Java7ParallelAggregator(Sum) - 36 Millis
+class com.epam.cdp.Java8Aggregator(Sum) - 56 Millis
+class com.epam.cdp.Java8ParallelAggregator(Sum) - 24 Millis
+
+10K
+class com.epam.cdp.Java7Aggregator(Duplicates) - 10585 Millis
+class com.epam.cdp.Java7ParallelAggregator(Duplicates) - 2708 Millis
+class com.epam.cdp.Java8Aggregator(Duplicates) - 10418 Millis
+class com.epam.cdp.Java8ParallelAggregator(Duplicates) - 2738 Millis
+
+10K
+class com.epam.cdp.Java7Aggregator(Frequency) - 8707 Millis
+class com.epam.cdp.Java7ParallelAggregator(Frequency) - 2165 Millis
+class com.epam.cdp.Java8Aggregator(Frequency) - 8156 Millis
+class com.epam.cdp.Java8ParallelAggregator(Frequency) - 2142 Millis

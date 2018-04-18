@@ -1,0 +1,34 @@
+<mapping>
+
+    <class name="com.epam.cdp.util.TicketBatch">
+        <map-to xml="batch"/>
+        <field name="tickets" collection="arraylist" type="com.epam.cdp.model.impl.TicketImpl" container="false">
+            <bind-xml name="tickets"/>
+        </field>
+    </class>
+
+    <class name="com.epam.cdp.model.impl.TicketImpl">
+        <map-to xml="ticket"/>
+
+        <field name="id" type="long">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+
+        <field name="userId" type="long">
+            <bind-xml name="userId" node="attribute"/>
+        </field>
+
+        <field name="eventId" type="long">
+            <bind-xml name="eventId" node="attribute"/>
+        </field>
+
+        <field name="category" type="com.epam.cdp.model.Ticket$Category">
+            <bind-xml name="category" node="attribute"/>
+        </field>
+
+        <field name="place" type="integer">
+            <bind-xml name="place" node="attribute"/>
+        </field>
+    </class>
+
+</mapping>

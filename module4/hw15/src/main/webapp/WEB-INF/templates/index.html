@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>thymeleaf</title>
+</head>
+<body>
+
+<table align="center" border="1" cellpadding="30" cellspacing="0">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>date</th>
+        <th>price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td>
+            <span th:text="${event.id}"></span>
+        </td>
+        <td>
+            <span th:text="${event.title}"></span>
+        </td>
+        <td>
+            <span th:text="${event.date}"></span>
+        </td>
+        <td>
+            <span th:text="${event.price}"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

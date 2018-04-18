@@ -1,0 +1,55 @@
+<project name="web" default="clean">
+  <import file="../common/build-common.xml"/>
+
+  <target name="build-web-content">
+    <delete file="${build}/${ant.project.name}.jar"/>
+
+    <copy todir="${build}/${ant.project.name}" preservelastmodified="true" overwrite="true">
+      <fileset dir="../web/src/main/webapp"/>
+    </copy>
+    <copy todir="${build}/${ant.project.name}/WEB-INF/lib" preservelastmodified="true">
+      <path refid="lib.path.id"/>
+    </copy>
+
+    <delete dir="${build.lib}"/>
+
+    <copy todir="${build}/${ant.project.name}/WEB-INF/classes">
+      <fileset dir="target/classes"/>
+    </copy>
+
+    <war compress="true"
+         encoding="utf-8"
+         warfile="${build}/${ant.project.name}.war"
+         webxml="${build}/${ant.project.name}/WEB-INF/web.xml">
+      <fileset dir="${build}/${ant.project.name}" excludes="WEB-INF/web.xml"/>
+    </war>
+  </target>
+
+  <target name="install">
+    <echo message="run install from web"/>
+    <antcall target="deploy"/>
+  </target>
+
+  <target name="package" depends="build-common.package, build-web-content">
+    <property file="build.properties"/>
+    <echo message="CATALINA_HOME ==> ${tomcat.home}/webapps"/>
+    <copy todir="${tomcat.home}/webapps" failonerror="yes">
+      <fileset file="${build}/${ant.project.name}.war"/>
+    </copy>
+  </target>
+
+  <target name="deploy" depends="package, build-web-content">
+    <property file="build.properties"/>
+    <echo message="CATALINA_HOME ==> ${tomcat.home}/webapps"/>
+    <copy todir="${tomcat.home}/webapps" failonerror="yes">
+      <fileset file="${build}/${ant.project.name}.war"/>
+    </copy>
+  </target>
+
+  <target name="undeploy">
+    <property file="build.properties"/>
+    <delete file="${tomcat.home}/webapps/${ant.project.name}.war" failonerror="false"/>
+    <delete dir="${tomcat.home}/webapps/${ant.project.name}" failonerror="false"/>
+  </target>
+
+</project>

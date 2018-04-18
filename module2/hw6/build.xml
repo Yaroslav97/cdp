@@ -1,0 +1,45 @@
+<project name="HM6" xmlns:ivy="antlib:org.apache.ivy.ant" default="clean"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="antlib:org.apache.ivy.ant ">
+
+  <target name="install-ivy" description="Install ivy" unless="ivy.installed">
+    <get dest="${ant.library.dir}/ivy.jar"
+         src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.3.0/ivy-2.3.0.jar"/>
+  </target>
+
+  <target name="build-sub-modules">
+    <ivy:buildlist reference="build-path">
+      <fileset dir="services" includes="**/build.xml"/>
+      <fileset dir="utils" includes="**/build.xml"/>
+      <fileset dir="admin" includes="**/build.xml"/>
+      <fileset dir="web" includes="**/build.xml"/>
+    </ivy:buildlist>
+  </target>
+
+  <target name="compile" depends="build-sub-modules"
+          description="compile, jar and publish all projects in the right order">
+    <subant target="compile" buildpathref="build-path"/>
+  </target>
+
+  <target name="install" depends="build-sub-modules"
+          description="compile, jar and publish all projects to local repository">
+    <subant target="install" buildpathref="build-path"/>
+  </target>
+
+  <target name="package" depends="build-sub-modules"
+          description="compile, jar and publish all projects in the right order">
+    <subant target="package" buildpathref="build-path"/>
+  </target>
+
+  <target name="clean" depends="build-sub-modules" description="clean all projects">
+    <subant target="clean" buildpathref="build-path"/>
+  </target>
+
+  <target name="test" depends="build-sub-modules" description="run all test">
+    <subant target="test" buildpathref="build-path"/>
+  </target>
+
+  <target name="report" depends="build-sub-modules" description="generates reports of dependencies for all modules">
+    <subant target="report" buildpathref="build-path"/>
+  </target>
+
+</project>

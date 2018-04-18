@@ -1,0 +1,10 @@
+.gradle/3.5-rc-2/fileContent/
+.gradle/3.5-rc-2/taskHistory/jvmClassSignatures.bin
+.idea/
+build/
+gradle/
+hw3.iml
+out/
+settings.gradle
+/config/
+/.gradle/

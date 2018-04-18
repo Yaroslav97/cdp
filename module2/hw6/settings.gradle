@@ -1,0 +1,6 @@
+rootProject.name = 'hw6'
+
+include ':utils'
+include ':services'
+include ':admin'
+include ':web'

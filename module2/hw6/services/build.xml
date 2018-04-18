@@ -1,0 +1,4 @@
+<project name="services" default="clean">
+  <import file="../common/build-common.xml"/>
+  <property name="main-class" value="com.services.BuilderService"/>
+</project>

@@ -1,0 +1,5 @@
+Average time spent for putting new values into cache
+
+JavaCache: 100K ~ 4 milliseconds
+
+GuavaCache: 100K ~ 0.8 milliseconds

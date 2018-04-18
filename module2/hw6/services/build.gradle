@@ -1,0 +1,5 @@
+group = 'services'
+description = ''
+dependencies {
+  compile project(':utils')
+}

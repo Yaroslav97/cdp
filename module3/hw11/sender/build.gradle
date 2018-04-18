@@ -1,0 +1,23 @@
+group 'hw11'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile group: 'javax.jms', name: 'javax.jms-api', version: '2.0'
+
+    compile group: 'org.apache.activemq', name: 'activemq-core', version: '5.2.0'
+
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.6'
+
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
+
+}

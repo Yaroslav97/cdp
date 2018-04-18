@@ -1,0 +1,38 @@
+echo 'CDP JaMP'
+lsb_release -a
+echo "$USER"
+pwd
+passwd
+date '+%F'
+date '+%T'
+
+echo $HOME
+cd ..
+cd ~
+ls
+mkdir test
+mv test newTest
+cd newTest
+date >> nowFile.txt
+cp nowFile.txt copyOfNowFile.txt
+ls -l
+touch epmtyFile.txt
+cd ~
+rm -r newTest
+
+cd ~
+mkdir permission
+cd permission
+echo 'This is very secret info' 
+chmod 333 secretFile.txt
+ls -l
+
+ps -aux | less             
+ps -eo pid,ppid,cmd,%mem,%cpu
+ps -u yaroslav
+top
+top -b -o +%MEM | head -n 22
+
+sudo apt install rand 
+rand -N 5000000 -M 100000 -e -d '\n' > numbers.txt
+time sort -n numbers.txt > sorted.txt

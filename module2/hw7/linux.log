@@ -1,0 +1,395 @@
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+yaroslav@yaroslav-VirtualBox:~$ echo 'CDP JaMP'
+CDP JaMP
+yaroslav@yaroslav-VirtualBox:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04.3 LTS
+Release:	16.04
+Codename:	xenial
+yaroslav@yaroslav-VirtualBox:~$ echo $USER
+yaroslav
+yaroslav@yaroslav-VirtualBox:~$ pwd
+/home/yaroslav
+yaroslav@yaroslav-VirtualBox:~$ passwd
+Changing password for yaroslav.
+(current) UNIX password: 
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+yaroslav@yaroslav-VirtualBox:~$ date '+%F'
+2017-11-13
+yaroslav@yaroslav-VirtualBox:~$ date '+%T'
+14:48:14
+yaroslav@yaroslav-VirtualBox:~$ echo $HOME
+/home/yaroslav
+yaroslav@yaroslav-VirtualBox:~$ cd ~
+yaroslav@yaroslav-VirtualBox:~$ ls
+Desktop    Downloads         Music     Public     Videos
+Documents  examples.desktop  Pictures  Templates
+yaroslav@yaroslav-VirtualBox:~$ mkdir test
+yaroslav@yaroslav-VirtualBox:~$ mv test newTest
+yaroslav@yaroslav-VirtualBox:~$ cd newTest
+yaroslav@yaroslav-VirtualBox:~/newTest$ date >> nowFile.txt
+yaroslav@yaroslav-VirtualBox:~/newTest$ cat nowFile.txt
+понеділок, 13 листопада 2017 14:50:09 +0200
+yaroslav@yaroslav-VirtualBox:~/newTest$ cp nowFile.txt copyOfNowFile.txt
+yaroslav@yaroslav-VirtualBox:~/newTest$ ls -l
+total 8
+-rw-rw-r-- 1 yaroslav yaroslav 62 лис 13 14:50 copyOfNowFile.txt
+-rw-rw-r-- 1 yaroslav yaroslav 62 лис 13 14:50 nowFile.txt
+yaroslav@yaroslav-VirtualBox:~/newTest$ touch emptyFile.txt
+yaroslav@yaroslav-VirtualBox:~/newTest$ cd ~
+yaroslav@yaroslav-VirtualBox:~$ rm -r newTest
+yaroslav@yaroslav-VirtualBox:~$ ls
+Desktop    Downloads         Music     Public     Videos
+Documents  examples.desktop  Pictures  Templates
+yaroslav@yaroslav-VirtualBox:~$
+yaroslav@yaroslav-VirtualBox:~$ mkdir permission
+yaroslav@yaroslav-VirtualBox:~$ cd permission
+yaroslav@yaroslav-VirtualBox:~/permission$ echo 'This is very secret info' >secretFile.txt
+yaroslav@yaroslav-VirtualBox:~/permission$ cat secretFile.txt
+This is very secret info
+yaroslav@yaroslav-VirtualBox:~/permission$ ls
+secretFile.txt
+yaroslav@yaroslav-VirtualBox:~/permission$ chmod 333 secretFile.txt
+yaroslav@yaroslav-VirtualBox:~/permission$ ls -l
+total 4
+--wx-wx-wx 1 yaroslav yaroslav 25 лис 13 15:05 secretFile.txt
+yaroslav@yaroslav-VirtualBox:~/permission$ cat secretFile.txt
+cat: secretFile.txt: Permission denied
+yaroslav@yaroslav-VirtualBox:~/permission$
+yaroslav@yaroslav-VirtualBox:~$ ps -aux | less
+yaroslav@yaroslav-VirtualBox:~$ 
+yaroslav@yaroslav-VirtualBox:~$ ps -eo pid,ppid,cmd,%mem,%cpu
+  PID  PPID CMD                         %MEM %CPU
+    1     0 /sbin/init splash            0.2  0.0
+    2     0 [kthreadd]                   0.0  0.0
+    4     2 [kworker/0:0H]               0.0  0.0
+    6     2 [ksoftirqd/0]                0.0  0.0
+    7     2 [rcu_sched]                  0.0  0.0
+    8     2 [rcu_bh]                     0.0  0.0
+    9     2 [migration/0]                0.0  0.0
+   10     2 [lru-add-drain]              0.0  0.0
+   11     2 [watchdog/0]                 0.0  0.0
+   12     2 [cpuhp/0]                    0.0  0.0
+   13     2 [kdevtmpfs]                  0.0  0.0
+   14     2 [netns]                      0.0  0.0
+   15     2 [khungtaskd]                 0.0  0.0
+   16     2 [oom_reaper]                 0.0  0.0
+   17     2 [writeback]                  0.0  0.0
+   18     2 [kcompactd0]                 0.0  0.0
+   19     2 [ksmd]                       0.0  0.0
+   20     2 [khugepaged]                 0.0  0.0
+   21     2 [crypto]                     0.0  0.0
+   22     2 [kintegrityd]                0.0  0.0
+   23     2 [bioset]                     0.0  0.0
+   24     2 [kblockd]                    0.0  0.0
+   25     2 [ata_sff]                    0.0  0.0
+   26     2 [md]                         0.0  0.0
+   27     2 [devfreq_wq]                 0.0  0.0
+   28     2 [watchdogd]                  0.0  0.0
+   32     2 [kauditd]                    0.0  0.0
+   33     2 [kswapd0]                    0.0  0.0
+   34     2 [vmstat]                     0.0  0.0
+   35     2 [bioset]                     0.0  0.0
+   36     2 [ecryptfs-kthrea]            0.0  0.0
+   76     2 [kthrotld]                   0.0  0.0
+   77     2 [acpi_thermal_pm]            0.0  0.0
+   78     2 [bioset]                     0.0  0.0
+   79     2 [bioset]                     0.0  0.0
+   80     2 [bioset]                     0.0  0.0
+   81     2 [bioset]                     0.0  0.0
+   82     2 [bioset]                     0.0  0.0
+   83     2 [bioset]                     0.0  0.0
+   84     2 [bioset]                     0.0  0.0
+   85     2 [bioset]                     0.0  0.0
+   86     2 [scsi_eh_0]                  0.0  0.0
+   87     2 [scsi_tmf_0]                 0.0  0.0
+   88     2 [scsi_eh_1]                  0.0  0.0
+   89     2 [scsi_tmf_1]                 0.0  0.0
+   95     2 [ipv6_addrconf]              0.0  0.0
+  116     2 [charger_manager]            0.0  0.0
+  117     2 [bioset]                     0.0  0.0
+  166     2 [kworker/0:1H]               0.0  0.0
+  167     2 [scsi_eh_2]                  0.0  0.0
+  168     2 [scsi_tmf_2]                 0.0  0.0
+  169     2 [bioset]                     0.0  0.0
+  197     2 [jbd2/sda1-8]                0.0  0.0
+  198     2 [ext4-rsv-conver]            0.0  0.0
+  231     1 /lib/systemd/systemd-journa  0.1  0.0
+  249     1 /lib/systemd/systemd-udevd   0.2  0.0
+  319     1 /lib/systemd/systemd-timesy  0.1  0.0
+  341     2 [iprt-VBoxWQueue]            0.0  0.0
+  360     2 [ttm_swap]                   0.0  0.0
+  634     1 /usr/sbin/acpid              0.0  0.0
+  648     1 /usr/sbin/cron -f            0.1  0.0
+  651     1 /usr/sbin/ModemManager       0.5  0.0
+  653     1 /lib/systemd/systemd-logind  0.1  0.0
+  657     1 /usr/bin/dbus-daemon --syst  0.2  0.0
+  701     1 /usr/sbin/NetworkManager --  0.8  0.0
+  702     1 /usr/lib/accountsservice/ac  0.4  0.0
+  704     1 /usr/sbin/rsyslogd -n        0.2  0.0
+  708     1 avahi-daemon: running [yaro  0.1  0.0
+  717     1 /usr/lib/snapd/snapd         1.1  0.0
+  773     1 /usr/lib/policykit-1/polkit  0.6  0.0
+  803     1 /usr/sbin/lightdm            0.3  0.0
+  813   708 avahi-daemon: chroot helper  0.0  0.0
+  814     1 /usr/sbin/cups-browsed       0.4  0.0
+  842   701 /sbin/dhclient -d -q -sf /u  0.1  0.0
+  843   803 /usr/lib/xorg/Xorg -core :0  6.6  0.8
+  856   701 /usr/sbin/dnsmasq --no-reso  0.2  0.0
+ 1009   803 lightdm --session-child 12   0.3  0.0
+ 1014     1 /lib/systemd/systemd --user  0.2  0.0
+ 1015  1014 (sd-pam)                     0.0  0.0
+ 1018  1009 /sbin/upstart --user         0.2  0.0
+ 1104  1018 upstart-udev-bridge --daemo  0.0  0.0
+ 1105  1018 dbus-daemon --fork --sessio  0.2  0.0
+ 1117  1018 /usr/lib/x86_64-linux-gnu/h  0.4  0.0
+ 1141  1018 upstart-dbus-bridge --daemo  0.0  0.0
+ 1143  1018 upstart-dbus-bridge --daemo  0.0  0.0
+ 1147  1018 upstart-file-bridge --daemo  0.0  0.0
+ 1150  1018 /usr/bin/ibus-daemon --daem  0.4  0.0
+ 1158     1 /usr/bin/whoopsie -f         0.6  0.0
+ 1165  1018 gnome-keyring-daemon --star  0.3  0.0
+ 1174     1 /sbin/agetty --noclear tty1  0.0  0.0
+ 1198  1018 /usr/lib/x86_64-linux-gnu/b  2.3  0.0
+ 1202  1018 /usr/lib/gvfs/gvfsd          0.3  0.0
+ 1207  1018 /usr/lib/gvfs/gvfsd-fuse /r  0.3  0.0
+ 1213  1018 /usr/lib/dconf/dconf-servic  0.2  0.0
+ 1215  1018 /usr/lib/at-spi2-core/at-sp  0.3  0.0
+ 1222  1215 /usr/bin/dbus-daemon --conf  0.1  0.0
+ 1225  1018 /usr/lib/at-spi2-core/at-sp  0.3  0.0
+ 1247  1150 /usr/lib/ibus/ibus-dconf     0.3  0.0
+ 1248  1150 /usr/lib/ibus/ibus-ui-gtk3   1.5  0.0
+ 1252  1018 /usr/lib/ibus/ibus-x11 --ki  1.0  0.0
+ 1284  1150 /usr/lib/ibus/ibus-engine-s  0.3  0.0
+ 1306  1018 /usr/lib/x86_64-linux-gnu/h  1.8  0.0
+ 1308  1018 /usr/lib/unity-settings-dae  1.6  0.0
+ 1316  1018 /usr/lib/gnome-session/gnom  0.7  0.0
+ 1320  1018 /usr/lib/x86_64-linux-gnu/u  1.6  0.0
+ 1344  1018 /usr/lib/x86_64-linux-gnu/i  0.4  0.0
+ 1345  1018 /usr/lib/x86_64-linux-gnu/i  0.3  0.0
+ 1346  1018 /usr/lib/x86_64-linux-gnu/i  0.6  0.0
+ 1347  1018 /usr/lib/x86_64-linux-gnu/i  0.8  0.0
+ 1348  1018 /usr/lib/x86_64-linux-gnu/i  1.3  0.0
+ 1349  1018 /usr/lib/x86_64-linux-gnu/i  0.7  0.0
+ 1350  1018 /usr/lib/x86_64-linux-gnu/i  1.1  0.0
+ 1351     1 /usr/lib/upower/upowerd      0.4  0.0
+ 1352  1018 /usr/lib/x86_64-linux-gnu/i  0.4  0.0
+ 1368  1308 [check_gl_textur] <defunct>  0.0  0.0
+ 1369  1018 /usr/lib/x86_64-linux-gnu/i  0.6  0.0
+ 1419     1 /usr/lib/colord/colord       0.7  0.0
+ 1423  1018 /usr/bin/pulseaudio --start  0.5  0.0
+ 1427     1 /usr/lib/rtkit/rtkit-daemon  0.1  0.0
+ 1439  1018 /usr/lib/evolution/evolutio  1.1  0.0
+ 1455  1018 compiz                      12.0 11.3
+ 1481  1018 /usr/lib/evolution/evolutio  2.9  0.0
+ 1489  1316 nautilus -n                  3.0  0.0
+ 1495  1316 /usr/bin/gnome-software --g  5.2  0.0
+ 1501  1316 nm-applet                    1.6  0.0
+ 1504  1316 /usr/lib/policykit-1-gnome/  0.9  0.0
+ 1521  1316 /usr/lib/unity-settings-dae  1.0  0.0
+ 1537  1018 /usr/lib/gvfs/gvfs-udisks2-  0.4  0.0
+ 1540     1 /usr/lib/udisks2/udisksd --  0.5  0.0
+ 1553  1018 /usr/lib/gvfs/gvfs-gphoto2-  0.2  0.0
+ 1555     1 /usr/lib/x86_64-linux-gnu/f  1.7  0.0
+ 1561  1018 /usr/lib/gvfs/gvfs-goa-volu  0.2  0.0
+ 1566  1018 /usr/lib/gvfs/gvfs-mtp-volu  0.2  0.0
+ 1572  1018 /usr/lib/gvfs/gvfs-afc-volu  0.4  0.0
+ 1596  1018 /usr/lib/gvfs/gvfsd-trash -  0.4  0.0
+ 1602  1481 /usr/lib/evolution/evolutio  2.5  0.0
+ 1618  1481 /usr/lib/evolution/evolutio  2.4  0.0
+ 1632  1018 /usr/lib/gvfs/gvfsd-metadat  0.2  0.0
+ 1633  1018 /usr/lib/evolution/evolutio  0.9  0.0
+ 1646  1633 /usr/lib/evolution/evolutio  1.0  0.0
+ 1680  1316 zeitgeist-datahub            0.7  0.0
+ 1687  1018 /bin/sh -c /usr/lib/x86_64-  0.0  0.0
+ 1691  1687 /usr/bin/zeitgeist-daemon    0.4  0.0
+ 1699  1018 /usr/lib/x86_64-linux-gnu/z  0.7  0.0
+ 1727  1316 update-notifier              1.2  0.0
+ 1768     1 gpg-agent --homedir /root/.  0.0  0.0
+ 2064  1316 /usr/lib/x86_64-linux-gnu/d  0.5  0.0
+ 2094  1018 /usr/lib/x86_64-linux-gnu/g  0.2  0.0
+ 2260     2 [kworker/0:0]                0.0  0.0
+ 4069  1018 /usr/lib/gvfs/gvfsd-network  0.4  0.0
+ 4088  1018 /usr/lib/gvfs/gvfsd-dnssd -  0.3  0.0
+ 4096     2 [kworker/0:1]                0.0  0.0
+ 4114     2 [kworker/u2:1]               0.0  0.0
+ 4230  1018 top -b -o +%MEM              0.1  0.3
+ 4292     2 [kworker/u2:0]               0.0  0.0
+ 4306     2 [kworker/u2:2]               0.0  0.0
+ 4311  1018 top -b -o +%MEM              0.1  0.3
+ 4317  1018 /usr/lib/gnome-terminal/gno  1.7  0.7
+ 4323  4317 bash                         0.2  0.0
+ 4338  4323 ps -eo pid,ppid,cmd,%mem,%c  0.0  0.0
+yaroslav@yaroslav-VirtualBox:~$ ps -u yaroslav
+  PID TTY          TIME CMD
+ 1014 ?        00:00:00 systemd
+ 1015 ?        00:00:00 (sd-pam)
+ 1018 ?        00:00:00 upstart
+ 1104 ?        00:00:00 upstart-udev-br
+ 1105 ?        00:00:01 dbus-daemon
+ 1117 ?        00:00:00 window-stack-br
+ 1141 ?        00:00:00 upstart-dbus-br
+ 1143 ?        00:00:00 upstart-dbus-br
+ 1147 ?        00:00:00 upstart-file-br
+ 1150 ?        00:00:11 ibus-daemon
+ 1165 ?        00:00:00 gnome-keyring-d
+ 1198 ?        00:00:01 bamfdaemon
+ 1202 ?        00:00:00 gvfsd
+ 1207 ?        00:00:00 gvfsd-fuse
+ 1213 ?        00:00:00 dconf-service
+ 1215 ?        00:00:00 at-spi-bus-laun
+ 1222 ?        00:00:00 dbus-daemon
+ 1225 ?        00:00:00 at-spi2-registr
+ 1247 ?        00:00:00 ibus-dconf
+ 1248 ?        00:00:01 ibus-ui-gtk3
+ 1252 ?        00:00:00 ibus-x11
+ 1284 ?        00:00:03 ibus-engine-sim
+ 1306 ?        00:00:00 hud-service
+ 1308 ?        00:00:01 unity-settings-
+ 1316 ?        00:00:00 gnome-session-b
+ 1320 ?        00:00:02 unity-panel-ser
+ 1344 ?        00:00:00 indicator-messa
+ 1345 ?        00:00:00 indicator-bluet
+ 1346 ?        00:00:00 indicator-power
+ 1347 ?        00:00:00 indicator-datet
+ 1348 ?        00:00:00 indicator-keybo
+ 1349 ?        00:00:00 indicator-sound
+ 1350 ?        00:00:00 indicator-print
+ 1352 ?        00:00:00 indicator-sessi
+ 1368 ?        00:00:00 check_gl_textur <defunct>
+ 1369 ?        00:00:00 indicator-appli
+ 1423 ?        00:00:00 pulseaudio
+ 1439 ?        00:00:00 evolution-sourc
+ 1455 ?        00:52:37 compiz
+ 1481 ?        00:00:00 evolution-calen
+ 1489 ?        00:00:04 nautilus
+ 1495 ?        00:00:02 gnome-software
+ 1501 ?        00:00:00 nm-applet
+ 1504 ?        00:00:00 polkit-gnome-au
+ 1521 ?        00:00:00 unity-fallback-
+ 1537 ?        00:00:00 gvfs-udisks2-vo
+ 1553 ?        00:00:00 gvfs-gphoto2-vo
+ 1561 ?        00:00:00 gvfs-goa-volume
+ 1566 ?        00:00:00 gvfs-mtp-volume
+ 1572 ?        00:00:00 gvfs-afc-volume
+ 1596 ?        00:00:00 gvfsd-trash
+ 1602 ?        00:00:00 evolution-calen
+ 1618 ?        00:00:00 evolution-calen
+ 1632 ?        00:00:00 gvfsd-metadata
+ 1633 ?        00:00:00 evolution-addre
+ 1646 ?        00:00:00 evolution-addre
+ 1680 ?        00:00:00 zeitgeist-datah
+ 1687 ?        00:00:00 sh
+ 1691 ?        00:00:00 zeitgeist-daemo
+ 1699 ?        00:00:00 zeitgeist-fts
+ 1727 ?        00:00:00 update-notifier
+ 2064 ?        00:00:00 deja-dup-monito
+ 2094 ?        00:00:00 gconfd-2
+ 4069 ?        00:00:00 gvfsd-network
+ 4088 ?        00:00:00 gvfsd-dnssd
+ 4230 ?        00:00:03 top
+ 4311 ?        00:00:00 top
+ 4317 ?        00:00:00 gnome-terminal-
+ 4323 pts/18   00:00:00 bash
+ 4339 pts/18   00:00:00 ps
+yaroslav@yaroslav-VirtualBox:~$ top
+
+top - 19:44:41 up  7:45,  1 user,  load average: 0,16, 0,10, 0,08
+Tasks: 160 total,   2 running, 157 sleeping,   0 stopped,   1 zombie
+%Cpu(s):  5,4 us,  1,6 sy,  0,0 ni, 93,0 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+KiB Mem :  2045960 total,   207216 free,   783608 used,  1055136 buff/cache
+KiB Swap:  2095100 total,  2095100 free,        0 used.  1053532 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND                                                                                                                                  
+ 1455 yaroslav  20   0 1312032 246108  77344 S  4,1 12,0  52:38.65 compiz                                                                                                                                   
+  843 root      20   0  500112 136568  43352 S  1,0  6,7   4:01.80 Xorg                                                                                                                                     
+ 4230 yaroslav  20   0   50236   4064   3536 S  0,6  0,2   0:03.61 top                                                                                                                                      
+ 4317 yaroslav  20   0  671292  36464  28876 S  0,6  1,8   0:00.42 gnome-terminal-                                                                                                                          
+ 4340 yaroslav  20   0   50372   4028   3396 R  0,6  0,2   0:00.02 top                                                                                                                                      
+  634 root      20   0    4400   1264   1172 S  0,3  0,1   0:00.50 acpid                                                                                                                                    
+ 1150 yaroslav  20   0  367076   8668   7096 S  0,3  0,4   0:11.41 ibus-daemon                                                                                                                              
+ 1489 yaroslav  20   0  958032  62152  48320 S  0,3  3,0   0:04.69 nautilus                                                                                                                                 
+ 4311 yaroslav  20   0   50336   3964   3388 S  0,3  0,2   0:00.51 top                                                                                                                                      
+    1 root      20   0  119632   5732   3936 S  0,0  0,3   0:01.09 systemd                                                                                                                                  
+    2 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kthreadd                                                                                                                                 
+    4 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0H                                                                                                                             
+    6 root      20   0       0      0      0 S  0,0  0,0   0:00.20 ksoftirqd/0                                                                                                                              
+    7 root      20   0       0      0      0 R  0,0  0,0   0:00.30 rcu_sched                                                                                                                                
+    8 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcu_bh                                                                                                                                   
+    9 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 migration/0                                                                                                                              
+   10 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 lru-add-drain                                                                                                                            
+   11 root      rt   0       0      0      0 S  0,0  0,0   0:00.13 watchdog/0                                                                                                                               
+   12 root      20   0       0      0      0 S  0,0  0,0   0:00.00 cpuhp/0                                                                                                                                  
+   13 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kdevtmpfs                                                                                                                                
+   14 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 netns                                                                                                                                    
+   15 root      20   0       0      0      0 S  0,0  0,0   0:00.01 khungtaskd                                                                                                                               
+   16 root      20   0       0      0      0 S  0,0  0,0   0:00.00 oom_reaper                                                                                                                               
+   17 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 writeback                                                                                                                                
+   18 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kcompactd0                                                                                                                               
+   19 root      25   5       0      0      0 S  0,0  0,0   0:00.00 ksmd                                                                                                                                     
+   20 root      39  19       0      0      0 S  0,0  0,0   0:00.38 khugepaged                                                                                                                               
+   21 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 crypto                                                                                                                                   
+   22 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kintegrityd                                                                                                                              
+   23 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+   24 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kblockd                                                                                                                                  
+   25 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 ata_sff                                                                                                                                  
+   26 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 md                                                                                                                                       
+   27 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 devfreq_wq                                                                                                                               
+   28 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 watchdogd                                                                                                                                
+   32 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kauditd                                                                                                                                  
+   33 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kswapd0                                                                                                                                  
+   34 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 vmstat                                                                                                                                   
+   35 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+   36 root      20   0       0      0      0 S  0,0  0,0   0:00.00 ecryptfs-kthrea                                                                                                                          
+   76 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kthrotld                                                                                                                                 
+   77 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 acpi_thermal_pm                                                                                                                          
+   78 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+   79 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+   80 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+   81 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+   82 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+   83 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset                                                                                                                                   
+yaroslav@yaroslav-VirtualBox:~$ 
+yaroslav@yaroslav-VirtualBox:~$ top -b -o +%MEM | head -n 22
+top - 19:45:02 up  7:45,  1 user,  load average: 0,11, 0,09, 0,08
+Tasks: 161 total,   1 running, 159 sleeping,   0 stopped,   1 zombie
+%Cpu(s): 11,9 us,  0,7 sy,  0,0 ni, 87,3 id,  0,2 wa,  0,0 hi,  0,0 si,  0,0 st
+KiB Mem :  2045960 total,   207216 free,   783612 used,  1055132 buff/cache
+KiB Swap:  2095100 total,  2095100 free,        0 used.  1053532 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
+ 1455 yaroslav  20   0 1312032 246108  77344 S 46,7 12,0  52:41.43 compiz
+  843 root      20   0  500112 136568  43352 S  6,7  6,7   4:02.38 Xorg
+ 1495 yaroslav  20   0 1048324 107220  28652 S  0,0  5,2   0:02.94 gnome-software
+ 1489 yaroslav  20   0  958032  62152  48320 S  0,0  3,0   0:04.69 nautilus
+ 1481 yaroslav  20   0  878420  60860  22728 S  0,0  3,0   0:00.15 evolution-calen
+ 1602 yaroslav  20   0  831372  51252  14692 S  0,0  2,5   0:00.05 evolution-calen
+ 1618 yaroslav  20   0  815620  50312  13848 S  0,0  2,5   0:00.06 evolution-calen
+ 1198 yaroslav  20   0  637868  49068  39236 S  0,0  2,4   0:01.91 bamfdaemon
+ 1306 yaroslav  20   0  656532  38420  31168 S  0,0  1,9   0:00.97 hud-service
+ 4317 yaroslav  20   0  671148  36204  28876 S  6,7  1,8   0:00.61 gnome-terminal-
+ 1555 root      20   0  635784  34880  10996 S  0,0  1,7   0:00.81 fwupd
+ 1308 yaroslav  20   0  938632  33012  25780 S  0,0  1,6   0:01.38 unity-settings-
+ 1501 yaroslav  20   0  608228  32856  27592 S  0,0  1,6   0:00.31 nm-applet
+ 1320 yaroslav  20   0  648736  32808  26104 S  0,0  1,6   0:02.14 unity-panel-ser
+ 1248 yaroslav  20   0  488288  32136  24752 S  0,0  1,6   0:01.90 ibus-ui-gtk3
+yaroslav@yaroslav-VirtualBox:~$ 
+yaroslav@yaroslav-VirtualBox:~$ ls
+Desktop    Downloads         Music       Pictures  Templates
+Documents  examples.desktop  permission  Public    Videos
+yaroslav@yaroslav-VirtualBox:~$ pwd
+/home/yaroslav
+yaroslav@yaroslav-VirtualBox:~$ cd Desctop
+bash: cd: Desctop: No such file or directory
+yaroslav@yaroslav-VirtualBox:~/Desktop$ rand -n 5000000 -M 100000 -e -d '\n' > numbers.txt
+yaroslav@yaroslav-VirtualBox:~/Desktop$ time sort -n numbers.txt > sorted.txt
+
+real	0m4.832s
+user	0m4.324s
+sys	0m0.040s
+yaroslav@yaroslav-VirtualBox:~/Desktop$

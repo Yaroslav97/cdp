@@ -1,0 +1,119 @@
+<project name="build-common" default="clean" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <property name="src" value="src/main/java"/>
+    <property name="src.test" value="src/test/java"/>
+    <property name="build" value="target"/>
+    <property name="build.classes" value="target/classes"/>
+    <property name="build.test.classes" value="target/test-classes"/>
+    <property name="src.resources" value="src/main/resources/"/>
+    <property name="src.test.resources" value="src/test/resources/"/>
+    <property name="build.lib" value="target/lib"/>
+
+    <target name="clean" description="clean target directory for sub module">
+        <echo message="${ant.project.name} path ==> ${ant.project.name}/${build}"/>
+        <delete dir="../${ant.project.name}/${build}"/>
+    </target>
+
+    <property name="ivy.settings.dir" value="../settings"/>
+    <ivy:settings file="${ivy.settings.dir}/ivysettings.xml"/>
+
+    <target name="resolve">
+        <ivy:retrieve pattern="${build.lib}/[artifact]-[revision].[ext]"/>
+    </target>
+
+    <path id="libraries.path">
+        <fileset dir="${build.lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="lib.path.id">
+        <path refid="libraries.path"/>
+    </path>
+
+    <path id="test.class.path">
+        <pathelement location="${build.lib}/junit-4.12.jar"/>
+        <pathelement location="${build.lib}/hamcrest-core-1.3.jar"/>
+        <pathelement location="${build.lib}/utils-1.0.jar"/>
+        <pathelement location="target/test-classes"/>
+        <pathelement location="target/classes"/>
+    </path>
+
+    <target name="compile" description="build class files" depends="clean, resolve">
+        <mkdir dir="${build.classes}"/>
+        <mkdir dir="${build.lib}"/>
+        <mkdir dir="${build.test.classes}"/>
+
+        <javac srcdir="${src}"
+               destdir="${build.classes}"
+               includeantruntime="false"
+               debug="on"
+               classpathref="libraries.path"/>
+
+        <copy todir="${build.classes}">
+            <fileset dir="${src.resources}" includes="**/*.xml,**/*.properties,**/*.txt"/>
+        </copy>
+
+        <javac srcdir="${src.test}"
+               includeantruntime="false"
+               destdir="${build.test.classes}"
+               debug="on"
+               classpathref="lib.path.id">
+            <classpath location="target/classes/"/>
+        </javac>
+        <copy todir="${build}/test-classes">
+            <fileset dir="src/test/resources/" includes="**/*.xml,**/*.properties,**/*.txt"/>
+        </copy>
+    </target>
+
+    <target name="package" depends="compile" description="Create executable jar file">
+        <manifestclasspath property="manifest.classpath" jarfile="${build}">
+            <classpath refid="libraries.path"/>
+        </manifestclasspath>
+
+        <property name="jar.file" value="${build}/${ant.project.name}.jar"/>
+        <delete file="${build}/ivy.xml"/>
+        <jar destfile="${jar.file}" basedir="${build.classes}">
+            <zipgroupfileset dir="${build.lib}" includes="*.jar" />
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+                <attribute name="Class-Path" value="${manifest.classpath}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="install"  depends="package" description="publish this project in the ivy repository">
+        <property name="revision" value="1.0"/>
+        <ivy:publish artifactspattern="${build}/[artifact].[ext]"
+                     resolver="local"
+                     pubrevision="${revision}"
+                     overwrite="true"
+                     status="release"/>
+        <echo message="project ${ant.project.name} released with version ${revision}"/>
+        <delete file="${build}/ivy.xml"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <mkdir dir="${build}/report"/>
+        <junit printsummary="yes" haltonfailure="yes">
+            <classpath>
+                <path refid="test.class.path"/>
+            </classpath>
+            <formatter type="brief"/>
+            <batchtest fork="yes"
+                       todir="${build}/report"
+                       haltonfailure="yes"
+                       filtertrace="on"
+                       haltonerror="yes">
+                <fileset dir="${src.test}">
+                    <include name="**/*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="report" depends="resolve" description="generates a report of dependencies">
+        <ivy:report todir="${build}/report"/>
+    </target>
+
+</project>

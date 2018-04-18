@@ -1,0 +1,4 @@
+<project name="utils" default="clean">
+  <import file="../common/build-common.xml"/>
+  <property name="main-class" value="com.utils.BuildersUtil"/>
+</project>
